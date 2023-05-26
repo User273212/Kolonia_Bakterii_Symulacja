@@ -5,4 +5,5 @@ public class ShowSimulationResults extends BacteriaTypeQuantity {
     private void ShowResults() {
 
     }
+
 }

@@ -1,30 +1,31 @@
+import java.util.Scanner;
+
 public class Input {
 
-    //fields
+    //instances
 
-    private int BacteriaNumberA;
-    private int BacteriaNumberB;
-    private int SimulationDuration;
+    Scanner input = new Scanner(System.in);
 
     //methods
 
     public int GetLenght() {
-        return 0;
+        return input.nextInt();
     }
 
     public int GetWidth() {
-        return 0;
+        return input.nextInt();
     }
 
     public int GetBacteriaNumberA() {
-        return 0;
+        return input.nextInt();
     }
 
     public int GetBacteriaNumberB() {
-        return 0;
+        return input.nextInt();
     }
 
+
     public int GetSimulationDuration() {
-        return 0;
+        return input.nextInt();
     }
 }

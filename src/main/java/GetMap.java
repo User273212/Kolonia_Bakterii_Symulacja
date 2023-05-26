@@ -1,15 +1,17 @@
 import java.util.List;
 
-public class GetMap {
+public class GetMap extends MapCreator {
 
     //fields
 
-    public List<List<String>> Map;
 
     //methods
 
+
     public List<List<String>> GetMap() {
-        List<List<String>> Map = null;
+
+        List<List<String>> Map = this.Map;
         return Map;
     }
+
 }

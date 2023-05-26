@@ -1,14 +1,25 @@
 import java.util.List;
 
-public abstract class BacteriaMovement {
+public abstract class BacteriaMovement extends CheckIfAdult {
 
     //fields
 
+
     //methods
 
-    private List<List<String>> MoveBacteria() {
+    protected List<List<String>> MoveBacteria() {
 
-        List<List<String>> Map = null;
+        GetMap get = new GetMap();
+        List<List<String>> Map = get.GetMap();
+
+        CheckIfAdult check = new CheckIfAdult();
+
+        check.CheckIfAdult(Map);
+
+        //  switch(Map){
+        //  case :
+        //  }
+
         return Map;
     }
 }
