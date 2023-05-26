@@ -1,2 +1,8 @@
-public enum BacteriaCreator {
+
+enum BacteriaCreator {
+
+    //constanst
+
+    A, a, B, b;
+
 }

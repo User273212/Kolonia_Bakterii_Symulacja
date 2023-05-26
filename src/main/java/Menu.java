@@ -1,6 +1,25 @@
-public class Menu{
+public class Menu {
 
-    public static void main(String[] args){
+    //fields
+    private char Exit;
+    private char Options;
+    private char Start;
+
+    public static void main(String[] args) {
+
+
+    }
+
+    //methods
+    private void ExitSimulation() {
+
+    }
+
+    private void SetSimulation() {
+
+    }
+
+    private void StartSimulation() {
 
     }
 }

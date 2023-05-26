@@ -1,2 +1,8 @@
-public class ShowSimulationResults {
+public class ShowSimulationResults extends BacteriaTypeQuantity {
+
+    //methods
+
+    private void ShowResults() {
+
+    }
 }
