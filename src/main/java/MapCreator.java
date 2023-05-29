@@ -11,9 +11,11 @@ public class MapCreator {
 
     private int Lenght = input.GetLenght();
     private int Width = input.GetWidth();
-    protected List<List<String>> Map = Create2DMap(Width, Lenght);
+    private List<List<String>> CreatedMap = Create2DMap(Width, Lenght);
+    protected List<List<String>> Map = CreatedMap;
 
     //methods
+
 
     private List<List<String>> Create2DMap(int x, int y) {
 

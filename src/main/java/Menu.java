@@ -8,7 +8,6 @@ public class Menu {
     //fields
     private static final String Exit = "e";
     private static final String Start = "s";
-    static Scanner insert = new Scanner(System.in);
 
     //variables
 
@@ -20,7 +19,7 @@ public class Menu {
         //DetectButton, eventually set simulation
 
 
-        if (CheckButton(insert.nextLine())) {
+        if (CheckButton()) {
 
 
             System.out.println("\n\b\bOptions:");
@@ -36,19 +35,40 @@ public class Menu {
             GetMap get_map = new GetMap(); //creating 2D Map - inserting Lenght and Width
             List<List<String>> Map = get_map.GetMap(); //accesing created map
             //bacteria A number
+            int BacteriaNumberA = input.GetBacteriaNumberA();
             //bacteria B number
-            long EndSimulation = SetSimulation(input.GetSimulationDuration()); //get simulation duration
+            int BacteriaNumberB = input.GetBacteriaNumberB();
+            int SimulationDuration = input.GetSimulationDuration();
+            long EndSimulation = SetSimulation(SimulationDuration); //get simulation duration
 
             //check if current duration of simulation is smaller than given value
-            if (System.currentTimeMillis() < EndSimulation) {
 
-                StartSimulation();
-                System.out.println("\n\b\bGenerating simulation...");
 
-                //print as matrix
-                for (List<String> matrix : Map)
-                    System.out.println(matrix);
-            }
+            StartSimulation();
+            System.out.println("\n\b\bGenerating simulation...\n");
+
+            //print as matrix
+            for (List<String> matrix : Map)
+                System.out.println(matrix);
+
+
+            //add bacteria
+            AddBacteria add_bacteria = new AddBacteria();
+            //     Map = add_bacteria.AddBacteria(BacteriaNumberA, BacteriaNumberB, Map); //ERROR
+
+            //input information
+            System.out.println("\n\nEntered data:\n");
+            System.out.println("1)Width (x) of 2D map: " + Map.size());
+            System.out.println("2)Lenght (y) of 2D map: " + Map.get(0).size());
+            System.out.println("3)Number of Bacteria type A: " + BacteriaNumberA);
+            System.out.println("4)Number of Bacteria type B: " + BacteriaNumberB);
+            System.out.println("5)Total time of simulation or number of maximum iterations: " + SimulationDuration);
+
+            //print as matrix
+            System.out.println("\nMatrix:\n");
+            for (List<String> matrix : Map)
+                System.out.println(matrix);
+
 
         }
 
@@ -62,23 +82,27 @@ public class Menu {
         System.out.println("s - Start simulation");
     }
 
-    private static boolean CheckButton(String button) {
+    private static boolean CheckButton() {
 
         boolean value = false;
-
-        switch (button) {
-            case Exit:
-                ExitSimulation();
+        Scanner insert = new Scanner(System.in);
+        String button;
+        do {
+            button = insert.nextLine();
+            switch (button) {
+                case Exit:
+                    ExitSimulation();
+                    break;
+                case Start: {
+                    System.out.println("\n\nPlease, insert desired settings for simulation");
+                    value = true;
+                }
                 break;
-            case Start: {
-                System.out.println("\n\nPlease, insert desired settings for simulation");
-                value = true;
+                default:
+                    System.out.println("\n\nThere is no such option in the menu!");
+                    break;
             }
-            break;
-            default:
-                System.out.println("\n\nThere is no such option in the menu!");
-                break;
-        }
+        } while ((!button.equals(Start)));
 
         System.out.println("value: " + value);
         return value;
