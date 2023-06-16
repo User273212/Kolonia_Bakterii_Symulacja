@@ -3,6 +3,6 @@ enum BacteriaCreator {
 
     //constanst
 
-    A, a, B, b;
+    A, a, B, b
 
 }

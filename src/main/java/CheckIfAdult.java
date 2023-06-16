@@ -1,22 +1,20 @@
 import java.util.List;
 
-public class CheckIfAdult {
+ interface CheckIfAdult {
 
-    //fields
+     //fields
 
 
-    //methods
+     //methods
 
-    public boolean CheckIfAdult(List<List<String>> Map) {
+     /*  function to check if bacteria is adult
+     function will return false if on position n will be character other than "A" or "B"
+     depending on used constructor, e.g. for value "0" function will return false   */
+     default boolean CheckIfAdult(List<List<String>> Map, BacteriaCreator BacteriaType, int positionX, int positionY) {
 
-        //checking is there uppercase character - adult bacteria
-        for (int row = 0; row < Map.size(); row++) {
-            for (int column = 0; column < Map.get(row).size(); column++) {
 
-            }
-        }
+         //checking is there uppercase character - adult bacteria
+         return Map.get(positionY).get(positionX).equals(String.valueOf(BacteriaType).toUpperCase());
+     }
 
-        return false;
-    }
-
-}
+ }

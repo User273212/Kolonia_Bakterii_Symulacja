@@ -1,10 +1,8 @@
 import java.util.List;
 
-public class BacteriaA {
+public class BacteriaA extends BacteriaMovement {
 
     //fields
-
-    public List<List<String>> Map;
     private int BacteriaNumberA;
 
     //methods
@@ -13,8 +11,14 @@ public class BacteriaA {
 
     }
 
-    private void BacteriaA() {
+    private void BacteriaA(List<List<String>> Map) {
 
+        MoveBacteria(Map);
+
+    }
+
+    public void GetBacteriaA(List<List<String>> Map) {
+        BacteriaA(Map);
     }
 
     public int CountBacteria() {

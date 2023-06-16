@@ -16,8 +16,6 @@ public class Menu {
         //Menu
         MainMenu();
 
-        //DetectButton, eventually set simulation
-
 
         if (CheckButton()) {
 
@@ -48,13 +46,22 @@ public class Menu {
             System.out.println("\n\b\bGenerating simulation...\n");
 
             //print as matrix
-            for (List<String> matrix : Map)
-                System.out.println(matrix);
+            PrintMap(Map);
 
 
             //add bacteria
             AddBacteria add_bacteria = new AddBacteria();
-            //     Map = add_bacteria.AddBacteria(BacteriaNumberA, BacteriaNumberB, Map); //ERROR
+            Map = add_bacteria.AddBacteria(BacteriaNumberA, BacteriaNumberB, Map); //ERROR
+
+            PrintMap(Map);
+
+            //adding biomass
+
+            Biomass biomass = new Biomass();
+
+            biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
+
+            PrintMap(Map);
 
             //input information
             System.out.println("\n\nEntered data:\n");
@@ -62,16 +69,34 @@ public class Menu {
             System.out.println("2)Lenght (y) of 2D map: " + Map.get(0).size());
             System.out.println("3)Number of Bacteria type A: " + BacteriaNumberA);
             System.out.println("4)Number of Bacteria type B: " + BacteriaNumberB);
-            System.out.println("5)Total time of simulation or number of maximum iterations: " + SimulationDuration);
+            System.out.println("5)Total time of simulation: " + (EndSimulation - System.currentTimeMillis()) + " s"); //SimulationDuration
 
-            //print as matrix
-            System.out.println("\nMatrix:\n");
-            for (List<String> matrix : Map)
-                System.out.println(matrix);
 
+            //Testing movement of bacteria
+            while (System.currentTimeMillis() + SimulationDuration < EndSimulation) {   //System.currentTimeMillis() + SimulationDuration != EndSimulation
+
+                BacteriaA bacteria_a = new BacteriaA();
+
+                bacteria_a.GetBacteriaA(Map);
+
+                PrintMap(Map);
+
+                biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
+
+                PrintMap(Map);
+
+                BacteriaB bacteria_b = new BacteriaB();
+
+                bacteria_b.GetBacteriaB(Map);
+
+                PrintMap(Map);
+
+
+            }
+
+            System.out.println("\nTotal time of simulation or number of maximum iterations: " + (EndSimulation - System.currentTimeMillis()));
 
         }
-
 
     }
 
@@ -104,8 +129,15 @@ public class Menu {
             }
         } while ((!button.equals(Start)));
 
-        System.out.println("value: " + value);
         return value;
+    }
+
+    private static void PrintMap(List<List<String>> Map) {
+
+        //print as matrix
+        System.out.println("\nMatrix:\n");
+        for (List<String> matrix : Map)
+            System.out.println(matrix);
     }
 
     //methods
