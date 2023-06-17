@@ -13,8 +13,9 @@ import java.util.List;
      default boolean CheckIfAdult(List<List<String>> Map, BacteriaCreator BacteriaType, int positionX, int positionY) {
 
 
+         String adult = String.valueOf(BacteriaType).toUpperCase();
          //checking is there uppercase character - adult bacteria
-         return Map.get(positionY).get(positionX).equals(String.valueOf(BacteriaType).toUpperCase());
+         return Map.get(positionY).get(positionX).equals(adult);
      }
 
  }

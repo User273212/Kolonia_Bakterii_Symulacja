@@ -6,7 +6,7 @@ public class SimulationSettings {
     public long SetSimulationDuration(int SimulationDurations) {
 
         long start = System.currentTimeMillis();
-        long end = start + SimulationDurations * 1000;
+        long end = start + SimulationDurations * 100;
         return end;
 
     }

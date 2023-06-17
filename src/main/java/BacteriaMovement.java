@@ -1,6 +1,6 @@
 import java.util.List;
 
-public abstract class BacteriaMovement implements CheckIfAdult, IsOutOfBorder, GrowBacteria {
+public abstract class BacteriaMovement implements CheckIfAdult, IsOutOfBorder, GrowBacteria, SplitBacteria {
 
     //fields
 
@@ -10,14 +10,15 @@ public abstract class BacteriaMovement implements CheckIfAdult, IsOutOfBorder, G
     protected List<List<String>> MoveBacteria(List<List<String>> Map) {
 
 
-        //CheckIfAdult
+
         for (int y = 0; y < Map.size(); y++)
             for (int x = 0; x < Map.get(0).size(); x++) {
 
 
                 //horizontal movement
-
-                if (CheckIfAdult(Map, BacteriaCreator.A, y, x) & (x + 2 < Map.get(0).size())) {
+//Map.get(y).get(x).equals(String.valueOf(BacteriaCreator.A))
+                //CheckIfAdult
+                if (Map.get(y).get(x).equals(String.valueOf(BacteriaCreator.A)) & (x + 2 < Map.get(0).size())) { //CheckIfAdult(Map, BacteriaCreator.A, y, x)
 
                     //move adult bacteria by 2 squares
                     Map.get(y).set(x + 2, String.valueOf(BacteriaCreator.A));
@@ -28,19 +29,28 @@ public abstract class BacteriaMovement implements CheckIfAdult, IsOutOfBorder, G
                     //increase the value of row to stop moving this bacteria
                     x++;
 
+                    //split bacteria
+                    if (Map.get(y).get(x + 1).equals("*")) {
+                        SplitBacteria(Map, y, x, BacteriaCreator.a);
+                        Map.get(y).set(x, "0");
+                    }
+
                     //vertical movement
 
 
-                } else if (Map.get(y).get(x).equals(String.valueOf(BacteriaCreator.a)) & (x + 1 < Map.get(0).size())) {
+                }
+                if (Map.get(y).get(x).equals(String.valueOf(BacteriaCreator.a)) & (x + 1 < Map.get(0).size())) {
 
 
                     if (Map.get(y).get(x + 1).equals("*")) {
 
-                        Map.get(y).set(x + 1, String.valueOf(BacteriaCreator.A));
+
                         //growing bacteria
-                        //   GrowBacteria(Map, y, x + 1);
+                        GrowBacteria(Map, y, x + 1, BacteriaCreator.A);
                         Map.get(y).set(x, "0");
-                        // x++;
+
+                        //increase the value of row to stop moving this bacteria
+                        x += 3;
                     } else {
 
                         //move small bacteria by 1 square

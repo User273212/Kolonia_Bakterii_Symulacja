@@ -8,10 +8,10 @@ public interface GrowBacteria {
     E.g [0,a,*] -> [0,0,a] -> [0,0,A]
     or faster [0,a,*] -> [0,0,A]
      */
-    default List<List<String>> GrowBacteria(List<List<String>> Map, int positionY, int positionX) {
+    default List<List<String>> GrowBacteria(List<List<String>> Map, int positionY, int positionX, BacteriaCreator BacteriaType) {
 
         //transform small bacteria to adult bacteria
-        Map.get(positionY).set(positionX, String.valueOf(BacteriaCreator.A));
+        Map.get(positionY).set(positionX, String.valueOf(BacteriaType));
 
 
         return Map;

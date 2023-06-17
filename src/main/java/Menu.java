@@ -59,7 +59,7 @@ public class Menu {
 
             Biomass biomass = new Biomass();
 
-            biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
+           biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
 
             PrintMap(Map);
 
@@ -74,10 +74,18 @@ public class Menu {
 
             //Testing movement of bacteria
             while (System.currentTimeMillis() + SimulationDuration < EndSimulation) {   //System.currentTimeMillis() + SimulationDuration != EndSimulation
-
+//<
                 BacteriaA bacteria_a = new BacteriaA();
 
                 bacteria_a.GetBacteriaA(Map);
+
+                PrintMap(Map);
+
+                biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
+
+                PrintMap(Map);
+
+                biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
 
                 PrintMap(Map);
 
@@ -94,8 +102,9 @@ public class Menu {
 
             }
 
-            System.out.println("\nTotal time of simulation or number of maximum iterations: " + (EndSimulation - System.currentTimeMillis()));
+            long SimulationTime = EndSimulation - System.currentTimeMillis();
 
+            PrintSimulationData(Map, BacteriaNumberA, BacteriaNumberB, 0, 0, SimulationTime);
         }
 
     }
@@ -156,5 +165,11 @@ public class Menu {
 
     private static void StartSimulation() {
 
+    }
+
+    private static void PrintSimulationData(List<List<String>> Map, int BacteriaChildA, int BacteriaChildB, int BacteriaAdultA, int BacteriaAdultB, long SimulationTime) {
+
+        ShowSimulationResults results = new ShowSimulationResults(Map, BacteriaChildA, BacteriaChildB, BacteriaAdultA, BacteriaAdultB, SimulationTime);
+        results.ShowResults();
     }
 }

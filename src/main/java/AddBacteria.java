@@ -37,10 +37,10 @@ public class AddBacteria {
             //generate position - bacteria
 
             Random randomX = new Random();
-            int x = randomX.nextInt(max - min) + min;
+            int x = randomX.nextInt(max - min + 1) + min;
 
             Random randomY = new Random();
-            int y = randomY.nextInt(max - min) + min;
+            int y = randomY.nextInt(max - min + 1) + min;
 
             //adding bacteria list to every row of 2d map
             Map.get(x).set(y, BacteriaList.get(column));
