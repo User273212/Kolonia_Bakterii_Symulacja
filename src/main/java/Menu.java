@@ -51,8 +51,9 @@ public class Menu {
 
             //add bacteria
             AddBacteria add_bacteria = new AddBacteria();
-            Map = add_bacteria.AddBacteria(BacteriaNumberA, BacteriaNumberB, Map); //ERROR
+            Map = add_bacteria.AddBacteria(BacteriaNumberA, BacteriaNumberB, Map);
 
+            System.out.println();
             PrintMap(Map);
 
             //adding biomass
@@ -61,6 +62,7 @@ public class Menu {
 
            biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
 
+            System.out.println();
             PrintMap(Map);
 
             //input information
@@ -74,29 +76,27 @@ public class Menu {
 
             //Testing movement of bacteria
             while (System.currentTimeMillis() + SimulationDuration < EndSimulation) {   //System.currentTimeMillis() + SimulationDuration != EndSimulation
-//<
+
+                //round of bacteria A
                 BacteriaA bacteria_a = new BacteriaA();
 
                 bacteria_a.GetBacteriaA(Map);
 
+                System.out.println("\nround of bacteria A:");
                 PrintMap(Map);
 
+                //round of biomass - adding biomass
                 biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
 
+                System.out.println("\nround of biomass - adding biomass:");
                 PrintMap(Map);
 
-                biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
-
-                PrintMap(Map);
-
-                biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
-
-                PrintMap(Map);
-
+                //round of bacteria B
                 BacteriaB bacteria_b = new BacteriaB();
 
                 bacteria_b.GetBacteriaB(Map);
 
+                System.out.println("\nround of bacteria B:");
                 PrintMap(Map);
 
 
@@ -144,7 +144,6 @@ public class Menu {
     private static void PrintMap(List<List<String>> Map) {
 
         //print as matrix
-        System.out.println("\nMatrix:\n");
         for (List<String> matrix : Map)
             System.out.println(matrix);
     }

@@ -11,29 +11,18 @@ public interface IsOutOfBorder extends CheckIfAdult {
     1) no -> function returns false
      */
 
-    default boolean IsOutOfBorder(List<List<String>> Map, BacteriaCreator BacteriaType, int positionX, int positionY) {
+    default boolean IsOutOfBorder(List<List<String>> Map, int row, int column) {
 
-        String Small = String.valueOf(BacteriaType).toLowerCase();
-        String Adult = String.valueOf(BacteriaType).toLowerCase();
+        int ActualRow = Map.size();
+        int ActualColumn = Map.get(0).size();
 
-        //check if bacteria is adult or small
-        if (CheckIfAdult(Map, BacteriaType, positionY, positionX)) {
-
-            //check next move of bacteria - adult
-            if (positionX + 2 < Map.get(0).size()) {
+        if (row >= 0 & column >= 0)
+            if (row < ActualRow & column < ActualColumn) {
+                //return true if bacteria is/won't be out of border
                 return true;
             }
 
-
-        } else if (Map.get(positionY).get(positionX).equals(Small)) {
-
-            //check next move of bacteria - small
-            if (positionX + 1 < Map.get(0).size()) {
-                return true;
-            }
-
-        }
-
+        //return false when bacteria is/will be out of border
         return false;
     }
 

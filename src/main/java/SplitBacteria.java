@@ -9,9 +9,9 @@ public interface SplitBacteria {
     Bacteria are positioned as close as possible to parent bacteria (in a radius of 1 position from parent bacteria)
 
     example:
-    [0, 0, 0, 0, 0]               [0, 0, 0, 0, 0]           [0, 0, a, 0, 0]
-    [0, 0, A, 0, 0]     --->      [0, 0, a, a, 0]   or      [0, 0, 0, a, 0]    etc.
-    [0, 0, 0, 0, 0]               [0, 0, 0, 0, 0]           [0, 0, 0, 0, 0]
+    [*, 0, 0, 0, 0]               [*, 0, 0, 0, 0]           [*, 0, a, 0, 0]
+    [0, 0, A, *, *]     --->      [0, 0, a, a, *]   or      [b, 0, 0, a, *]    etc.
+    [0, B, 0, 0, 0]               [0, B, 0, 0, 0]           [0, B, 0, 0, 0]
      */
     default List<List<String>> SplitBacteria(List<List<String>> Map, int positionY, int positionX, BacteriaCreator BacteriaType) {
 
