@@ -1,13 +1,10 @@
 public class SimulationSettings {
 
-
-    //methods
-
     public long SetSimulationDuration(int SimulationDurations) {
+        //Method to set simulation duration
 
         long start = System.currentTimeMillis();
-        long end = start + SimulationDurations * 100;
-        return end;
+        return start + SimulationDurations * 1000L;
 
     }
 

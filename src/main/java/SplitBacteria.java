@@ -2,9 +2,10 @@ import java.util.List;
 
 public interface SplitBacteria {
 
-    //methods
 
-    /*
+    default void SplitBacteria(List<List<String>> Map, int y, int x, BacteriaType smallBacteria) {
+
+            /*
     Method to split adult bacteria into two single bacteria of a given type.
     Bacteria are positioned as close as possible to parent bacteria (in a radius of 1 position from parent bacteria)
 
@@ -13,34 +14,39 @@ public interface SplitBacteria {
     [0, 0, A, *, *]     --->      [0, 0, a, a, *]   or      [b, 0, 0, a, *]    etc.
     [0, B, 0, 0, 0]               [0, B, 0, 0, 0]           [0, B, 0, 0, 0]
      */
-    default List<List<String>> SplitBacteria(List<List<String>> Map, int positionY, int positionX, BacteriaCreator BacteriaType) {
 
-        //declaring variables
-        double x = 2, y = 6, r = 1;
+        if (x + 1 <= Map.get(0).size() && Map.get(y).get(x + 1).equals("*")) {
+            Map.get(y).set(x, String.valueOf(smallBacteria));
+            Map.get(y).set(x + 1, String.valueOf(smallBacteria));
 
-        //applying logic
-        double X = x * x;
-        double Y = y * y;
-        double R = r * r;
-        double point = X + Y;
+        } else if (x > 0 && Map.get(y).get(x - 1).equals("*")) {
+            Map.get(y).set(x, String.valueOf(smallBacteria));
+            Map.get(y).set(x - 1, String.valueOf(smallBacteria));
 
-        //checking the condition
-        if (point < R) {
+        } else if (y + 1 <= Map.size() && Map.get(y + 1).get(x).equals("*")) {
+            Map.get(y).set(x, String.valueOf(smallBacteria));
+            Map.get(y + 1).set(x, String.valueOf(smallBacteria));
 
-            //print if point lie inside circle
-            System.out.println("Point exist in circle sector.");
+        } else if (y > 0 && Map.get(y - 1).get(x).equals("*")) {
+            Map.get(y).set(x, String.valueOf(smallBacteria));
+            Map.get(y - 1).set(x, String.valueOf(smallBacteria));
 
-            for (int row = 0; row < 4; row++)
-                for (int column = 0; column < 4; column++) {
-                    Map.get(positionY + row).set(positionX + column, String.valueOf(BacteriaType.a));
-                    Map.get(positionY + row + 1).set(positionX + column + 1, String.valueOf(BacteriaType.a));
-                }
-        } else {
+        } else if (x + 1 <= Map.get(0).size() && y + 1 <= Map.size() && Map.get(y + 1).get(x + 1).equals("*")) {
+            Map.get(y).set(x, String.valueOf(smallBacteria));
+            Map.get(y + 1).set(x + 1, String.valueOf(smallBacteria));
 
-            //print if point does not lie inside circle
-            System.out.println("Point does not exist in circle sector.");
+        } else if (x > 0 && y + 1 <= Map.size() && Map.get(y + 1).get(x - 1).equals("*")) {
+            Map.get(y).set(x, String.valueOf(smallBacteria));
+            Map.get(y + 1).set(x - 1, String.valueOf(smallBacteria));
+
+        } else if (x + 1 <= Map.get(0).size() && y > 0 && Map.get(y - 1).get(x + 1).equals("*")) {
+            Map.get(y).set(x, String.valueOf(smallBacteria));
+            Map.get(y - 1).set(x + 1, String.valueOf(smallBacteria));
+
+        } else if (x > 0 && y > 0 && Map.get(y - 1).get(x - 1).equals("*")) {
+            Map.get(y).set(x, String.valueOf(smallBacteria));
+            Map.get(y - 1).set(x - 1, String.valueOf(smallBacteria));
         }
-        return Map;
     }
 
 

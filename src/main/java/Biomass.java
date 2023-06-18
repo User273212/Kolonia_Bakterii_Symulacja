@@ -4,20 +4,8 @@ import java.util.Random;
 
 public class Biomass {
 
-    //fields
-
-    private int RndNumber;
-    private List<List<String>> Map;
-    private int Seed;
-
-    //methods
-
-    private int SetSeed() {
-
-        return 0;
-    }
-
     public int GenerateBiomassQuantity(List<List<String>> Map) {
+        //Method used to Generate biomass quantity
 
         Random random = new Random();
         int min = 0;
@@ -28,7 +16,8 @@ public class Biomass {
         return random.nextInt(max - min) + min;
     }
 
-    public List<List<String>> AddBiomass(List<List<String>> Map, int GenerateBiomassQuantity) {
+    public void AddBiomass(List<List<String>> Map, int GenerateBiomassQuantity) {
+        //Method used to add Generated biomass to map
 
         List<String> Biomass = new ArrayList<>();
 
@@ -63,6 +52,5 @@ public class Biomass {
         }
 
 
-        return Map;
     }
 }

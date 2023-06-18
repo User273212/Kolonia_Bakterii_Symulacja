@@ -2,33 +2,35 @@ import java.util.List;
 
 public class ShowSimulationResults implements BacteriaQuantity {
 
-    /*
-    Class used for storing final data of simulation
-     */
+
+    // Class used for storing final data of simulation
+
 
     //fields
-    private int Width;
-    private int Lenght;
+    private final int Width;
+    private final int Length;
 
     //before simulation
-    private int BacteriaChildA;
-    private int BacteriaChildB;
-    private int BacteriaAdultA;
-    private int BacteriaAdultB;
+    private final int BacteriaChildA;
+    private final int BacteriaChildB;
+    private final int BacteriaAdultA;
+    private final int BacteriaAdultB;
 
     //after simulation
-    private int BacteriaChildAQuantity;
-    private int BacteriaChildBQuantity;
-    private int BacteriaAdultAQuantity;
-    private int BacteriaAdultBQuantity;
-    private long SimulationTime;
+    private final int BacteriaChildAQuantity;
+    private final int BacteriaChildBQuantity;
+    private final int BacteriaAdultAQuantity;
+    private final int BacteriaAdultBQuantity;
+    private final long SimulationTime;
 
 
     //constructor
     public ShowSimulationResults(List<List<String>> Map, int BacteriaChildA, int BacteriaChildB, int BacteriaAdultA, int BacteriaAdultB, long SimulationTime) {
 
+        //Method used to assign data to private fields of ShowSimulationResults Class
+
         Width = Map.size();
-        Lenght = Map.get(0).size();
+        Length = Map.get(0).size();
 
         //before simulation
         this.BacteriaChildA = BacteriaChildA;
@@ -37,25 +39,23 @@ public class ShowSimulationResults implements BacteriaQuantity {
         this.BacteriaAdultB = BacteriaAdultB;
 
         //after simulation
-        BacteriaChildAQuantity = BacteriaQuantity(Map, BacteriaCreator.a);
-        BacteriaChildBQuantity = BacteriaQuantity(Map, BacteriaCreator.b);
-        BacteriaAdultAQuantity = BacteriaQuantity(Map, BacteriaCreator.A);
-        BacteriaAdultBQuantity = BacteriaQuantity(Map, BacteriaCreator.B);
+        BacteriaChildAQuantity = BacteriaQuantity(Map, BacteriaType.a);
+        BacteriaChildBQuantity = BacteriaQuantity(Map, BacteriaType.b);
+        BacteriaAdultAQuantity = BacteriaQuantity(Map, BacteriaType.A);
+        BacteriaAdultBQuantity = BacteriaQuantity(Map, BacteriaType.B);
         this.SimulationTime = SimulationTime;
 
     }
-    //constructor
 
-
-    //methods
 
     public void ShowResults() {
 
+        // Method used for printing enetered and final data of simulation
 
         //Simulation information
         System.out.println("\n\nSimulation data:\n");
         System.out.println("Width (x) of 2D map: " + Width);
-        System.out.println("Lenght (y) of 2D map: " + Lenght);
+        System.out.println("Lenght (y) of 2D map: " + Length);
 
         System.out.println("\nBefore simulation:\n");
 

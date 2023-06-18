@@ -3,12 +3,8 @@ import java.util.List;
 
 public interface BacteriaQuantity {
 
-    //methods
-
-    /*
-    Method to count occurrences of bacteria type
-     */
-    default int BacteriaQuantity(List<List<String>> Map, BacteriaCreator BacteriaType) {
+    default int BacteriaQuantity(List<List<String>> Map, BacteriaType BacteriaType) {
+        //Method used count bacteria quantity of specified type
 
         int BacteriaOccurrences = 0;
         for (int row = 0; row < Map.size(); row++)

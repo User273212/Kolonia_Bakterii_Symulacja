@@ -1,96 +1,43 @@
 import java.util.List;
 import java.util.Random;
 
-public abstract class BacteriaMovement implements CheckIfAdult, IsOutOfBorder, GrowBacteria, SplitBacteria {
+public abstract class BacteriaMovement implements IsOutOfBorder, GrowBacteria, SplitBacteria {
 
-    //fields
-
-
-    //methods
-
-    protected List<List<String>> MoveBacteria(List<List<String>> Map) {
-
-        // GeneralizedMovement(Map, 0, 0, BacteriaCreator.a);
-
+    public void moveBacteria(List<List<String>> Map, BacteriaType bigBacteria, BacteriaType smallBacteria) {
+        //Method used to move bacteria around the Map and if possible, to activate bacteria splitting
         for (int y = 0; y < Map.size(); y++)
             for (int x = 0; x < Map.get(0).size(); x++) {
+                if (Map.get(y).get(x).equals(String.valueOf(bigBacteria))) {
 
-
-                //horizontal movement
-
-                //CheckIfAdult
-                if (Map.get(y).get(x).equals(String.valueOf(BacteriaCreator.A)) & (x + 2 < Map.get(0).size())) { //CheckIfAdult(Map, BacteriaCreator.A, y, x)
-
-                    //move adult bacteria by 2 squares
-                    //   Map.get(y).set(x + 2, String.valueOf(BacteriaCreator.A));
-                    GeneralizedMovement(Map, y, x, BacteriaCreator.A);
-                    //delete bacteria from previous position
-                    //  Map.get(y).set(x, "0");
-
-                    //increase the value of row to stop moving this bacteria
-                    x++;
-
-                    //split bacteria
-                    if (Map.get(y).get(x + 1).equals("*")) {
-                        SplitBacteria(Map, y, x, BacteriaCreator.a);
-                        Map.get(y).set(x, "0");
-                    }
-
-                    //vertical movement
-
-
+                    //Splitting bacteria
+                    SplitBacteria(Map, y, x, smallBacteria);
                 }
-                if (Map.get(y).get(x).equals(String.valueOf(BacteriaCreator.a)) & (x + 1 < Map.get(0).size())) {
 
-
+                if (Map.get(y).get(x).equals(String.valueOf(smallBacteria)) & (x + 1 < Map.get(0).size())) {
                     if (Map.get(y).get(x + 1).equals("*")) {
-
-
-                        //growing bacteria
-                        GrowBacteria(Map, y, x + 1, BacteriaCreator.A);
+                        GrowBacteria(Map, y, x + 1, bigBacteria);
                         Map.get(y).set(x, "0");
-
-                        //increase the value of row to stop moving this bacteria
                         x += 3;
                     } else {
-
-                        //move small bacteria by 1 square
-                        //          Map.get(y).set(x + 1, String.valueOf(BacteriaCreator.a));
-                        GeneralizedMovement(Map, y, x, BacteriaCreator.a);
-                        //delete bacteria from previous position
-                        //       Map.get(y).set(x, "0");
-
-                        //increase the value of row to stop moving this bacteria
+                        //Moving bacteria in any direction
+                        generalizedMovement(Map, y, x, smallBacteria, true);
                         x++;
-
-                        //vertical movement
-
                     }
                 }
-
             }
-
-        return Map;
     }
 
-    protected List<List<String>> GeneralizedMovement(List<List<String>> Map, int PositionY, int PositionX, BacteriaCreator BacteriaType) {
+    private void generalizedMovement(List<List<String>> Map, int PositionY, int PositionX, BacteriaType bacteriaType, boolean isBacteriaSmall) {
+        //Method used to move bacteria around the Map in any direction, using pseudorandom numbers
+        int min;
+        int max;
 
-        int min = 0;
-        int max = 0;
-
-
-        switch (BacteriaType) {
-
-            case a:
-                min = -1;
-                max = 1;
-                break;
-            case A:
-                min = -2;
-                max = 2;
-                break;
-            default:
-                break;
+        if (isBacteriaSmall) {
+            min = -1;
+            max = 1;
+        } else {
+            min = -2;
+            max = 2;
         }
 
         Random randomY = new Random();
@@ -99,14 +46,13 @@ public abstract class BacteriaMovement implements CheckIfAdult, IsOutOfBorder, G
         int y = randomY.nextInt(max - min + 1) + min;
         int x = randomX.nextInt(max - min + 1) + min;
 
+        //Check if bacteria is going to be out of border
         if (IsOutOfBorder(Map, PositionY + y, PositionX + x)) {
 
-            Map.get(PositionY + y).set(PositionX + x, String.valueOf(BacteriaType));
+            Map.get(PositionY + y).set(PositionX + x, String.valueOf(bacteriaType));
 
             if (x != 0 | y != 0)
                 Map.get(PositionY).set(PositionX, "0");
         }
-
-        return Map;
     }
 }

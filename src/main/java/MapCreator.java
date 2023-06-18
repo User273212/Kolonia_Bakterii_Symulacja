@@ -3,25 +3,23 @@ import java.util.List;
 
 public class MapCreator {
 
-    //instances
+    private List<List<String>> CreatedMap;
 
-    Input input = new Input();
+    public MapCreator() {
+        //Map constructor
+        Input input = new Input();
+        int length = input.getInputNextInt();
+        int width = input.getInputNextInt();
+        this.CreatedMap = Create2DMap(width, length);
+    }
 
-    //fields
+    public List<List<String>> Create2DMap(int x, int y) {
 
-    private int Lenght = input.GetLenght();
-    private int Width = input.GetWidth();
-    private List<List<String>> CreatedMap = Create2DMap(Width, Lenght);
-    protected List<List<String>> Map = CreatedMap;
-
-    //methods
-
-
-    private List<List<String>> Create2DMap(int x, int y) {
+        //Method use to create 2d Map
 
         List<List<String>> Map = new ArrayList<>();
 
-        //add sublists to main list
+        //add sublist to main list
         for (int row = 0; row < x; row++) {
             Map.add(row, new ArrayList<>());
             for (int column = 0; column < y; column++) {
@@ -33,5 +31,14 @@ public class MapCreator {
     }
 
 
+    public List<List<String>> getMap() {
+        //Getter for created Map
+        return CreatedMap;
+    }
+
+    public void setMap(List<List<String>> map) {
+        //Setter for Map
+        CreatedMap = map;
+    }
 }
 
