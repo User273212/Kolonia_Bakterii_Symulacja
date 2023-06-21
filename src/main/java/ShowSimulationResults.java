@@ -74,7 +74,7 @@ public class ShowSimulationResults implements BacteriaQuantity {
         System.out.println("4)Number of child Bacteria type b: " + BacteriaChildBQuantity);
         System.out.println("5)Number of Bacteria type A: " + (BacteriaChildAQuantity + BacteriaAdultAQuantity));
         System.out.println("6)Number of Bacteria type B: " + (BacteriaChildBQuantity + BacteriaAdultBQuantity));
-        System.out.println("7)Total time of simulation or number of maximum iterations: " + SimulationTime + " seconds");
+        System.out.println("7)Total time of simulation: " + SimulationTime + " seconds");
     }
 
 

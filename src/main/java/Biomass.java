@@ -26,9 +26,10 @@ public class Biomass {
             Biomass.add("*");
 
 
-        int max = Map.get(0).size() - 1;
-
+        int Xmax = Map.size() - 1;
         int min = 0;
+
+        int Ymax = Map.get(0).size() - 1;
 
 
         for (int column = 0; column < GenerateBiomassQuantity; column++) {
@@ -36,10 +37,10 @@ public class Biomass {
             //generate position biomass drawing
 
             Random randomX = new Random();
-            int x = randomX.nextInt(max - min) + min;
+            int x = randomX.nextInt(Xmax - min) + min;
 
             Random randomY = new Random();
-            int y = randomY.nextInt(max - min) + min;
+            int y = randomY.nextInt(Ymax - min) + min;
 
             //checking, if there is a room for biomass
             if (Map.get(x).get(y).equals("0")) {

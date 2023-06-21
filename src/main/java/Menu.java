@@ -53,14 +53,6 @@ public class Menu {
             System.out.println();
             PrintMap(Map);
 
-            //input information
-            System.out.println("\n\nEntered data:\n");
-            System.out.println("1)Width (x) of 2D map: " + Map.size());
-            System.out.println("2)Length (y) of 2D map: " + Map.get(0).size());
-            System.out.println("3)Number of Bacteria type A: " + BacteriaNumberA);
-            System.out.println("4)Number of Bacteria type B: " + BacteriaNumberB);
-            System.out.println("5)Total time of simulation: " + (EndSimulation - System.currentTimeMillis()) + " s"); //SimulationDuration
-
 
             //Testing movement of bacteria
             while (System.currentTimeMillis() + SimulationDuration < EndSimulation) {

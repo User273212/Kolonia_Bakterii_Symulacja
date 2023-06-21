@@ -20,9 +20,10 @@ public class AddBacteria {
             BacteriaList.add(BacteriaType.b.toString());
         }
 
-        int max = Map.get(0).size() - 1;
-
+        int Xmax = Map.size() - 1;
         int min = 0;
+
+        int Ymax = Map.get(0).size() - 1;
 
 
         for (String add : BacteriaList) {
@@ -30,10 +31,10 @@ public class AddBacteria {
             //generate position - bacteria
 
             Random randomX = new Random();
-            int x = randomX.nextInt(max - min + 1) + min;
+            int x = randomX.nextInt(Xmax - min + 1) + min;
 
             Random randomY = new Random();
-            int y = randomY.nextInt(max - min + 1) + min;
+            int y = randomY.nextInt(Ymax - min + 1) + min;
 
             //adding bacteria list to every row of 2d map
             Map.get(x).set(y, add);
