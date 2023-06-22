@@ -1,8 +1,18 @@
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The interface Bacteria quantity.
+ */
 public interface BacteriaQuantity {
 
+    /**
+     * Bacteria quantity int.
+     *
+     * @param Map          the map
+     * @param BacteriaType the bacteria type
+     * @return the int
+     */
     default int BacteriaQuantity(List<List<String>> Map, BacteriaType BacteriaType) {
         //Method used count bacteria quantity of specified type
 

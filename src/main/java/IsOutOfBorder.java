@@ -1,8 +1,19 @@
 import java.util.List;
 
+/**
+ * The interface Is out of border.
+ */
 public interface IsOutOfBorder {
 
 
+    /**
+     * Is out of border boolean.
+     *
+     * @param Map    the map
+     * @param row    the row
+     * @param column the column
+     * @return the boolean
+     */
     default boolean IsOutOfBorder(List<List<String>> Map, int row, int column) {
 
         /*

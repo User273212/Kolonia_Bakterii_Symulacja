@@ -1,6 +1,9 @@
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The type Menu.
+ */
 public class Menu {
 
     private static final String Exit = "e";
@@ -8,12 +11,18 @@ public class Menu {
 
     //variables
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         //Menu
         MainMenu();
+        List<List<String>> Map;
         if (CheckButton()) {
             System.out.println("\n\b\bOptions:");
-            System.out.println("\nWARNING!\nAll values must be integer!\n");
+            System.out.println("\nWARNING!\nAll values must be integer and Sum of Bacteria A and B >= Length of Map!\n");
             System.out.println("1)Width (x) of 2D map");
             System.out.println("2)Length (y) of 2D map");
             System.out.println("3)Number of Bacteria type A");
@@ -22,17 +31,24 @@ public class Menu {
 
             //preparing input
             Input input = new Input();
+
+
             MapCreator mapCreator = new MapCreator();
             //accessing created map
-            List<List<String>> Map = mapCreator.getMap();
+            Map = mapCreator.getMap();
             //bacteria A number
             int BacteriaNumberA = input.getInputNextInt();
             //bacteria B number
             int BacteriaNumberB = input.getInputNextInt();
             int SimulationDuration = input.getInputNextInt();
+
             //get simulation duration
             long EndSimulation = SetSimulation(SimulationDuration);
 
+            if (BacteriaNumberA > Map.get(0).size() || BacteriaNumberB > Map.get(0).size()) {
+                System.out.println("\nNumber of Bacteria A or B is to big for map size!");
+                ExitSimulation();
+            }
 
             System.out.println("\n\b\bGenerating simulation...\n");
 
@@ -83,8 +99,8 @@ public class Menu {
             long SimulationTime = EndSimulation - System.currentTimeMillis();
 
             PrintSimulationData(Map, BacteriaNumberA, BacteriaNumberB, 0, 0, SimulationTime);
-        }
 
+        }
     }
 
     private static void MainMenu() {

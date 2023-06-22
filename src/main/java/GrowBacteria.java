@@ -1,8 +1,19 @@
 import java.util.List;
 
+/**
+ * The interface Grow bacteria.
+ */
 public interface GrowBacteria {
 
 
+    /**
+     * Grow bacteria.
+     *
+     * @param Map          the map
+     * @param positionY    the position y
+     * @param positionX    the position x
+     * @param BacteriaType the bacteria type
+     */
     default void GrowBacteria(List<List<String>> Map, int positionY, int positionX, BacteriaType BacteriaType) {
 
         /*

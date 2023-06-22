@@ -3,8 +3,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The type Add bacteria.
+ */
 public class AddBacteria {
 
+    /**
+     * Add bacteria list.
+     *
+     * @param BacteriaNumberA the bacteria number a
+     * @param BacteriaNumberB the bacteria number b
+     * @param Map             the map
+     * @return the list
+     */
     public List<List<String>> AddBacteria(int BacteriaNumberA, int BacteriaNumberB, List<List<String>> Map) {
         //Method used for adding bacteria to map
 

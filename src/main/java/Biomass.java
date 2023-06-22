@@ -2,8 +2,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The type Biomass.
+ */
 public class Biomass {
 
+    /**
+     * Generate biomass quantity int.
+     *
+     * @param Map the map
+     * @return the int
+     */
     public int GenerateBiomassQuantity(List<List<String>> Map) {
         //Method used to Generate biomass quantity
 
@@ -16,6 +25,12 @@ public class Biomass {
         return random.nextInt(max - min) + min;
     }
 
+    /**
+     * Add biomass.
+     *
+     * @param Map                     the map
+     * @param GenerateBiomassQuantity the generate biomass quantity
+     */
     public void AddBiomass(List<List<String>> Map, int GenerateBiomassQuantity) {
         //Method used to add Generated biomass to map
 

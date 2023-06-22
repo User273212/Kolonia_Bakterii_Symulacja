@@ -1,8 +1,19 @@
 import java.util.List;
 
+/**
+ * The interface Split bacteria.
+ */
 public interface SplitBacteria {
 
 
+    /**
+     * Split bacteria.
+     *
+     * @param Map           the map
+     * @param y             the y
+     * @param x             the x
+     * @param smallBacteria the small bacteria
+     */
     default void SplitBacteria(List<List<String>> Map, int y, int x, BacteriaType smallBacteria) {
 
             /*

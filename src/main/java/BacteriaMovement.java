@@ -1,8 +1,18 @@
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The type Bacteria movement.
+ */
 public abstract class BacteriaMovement implements IsOutOfBorder, GrowBacteria, SplitBacteria {
 
+    /**
+     * Move bacteria.
+     *
+     * @param Map           the map
+     * @param bigBacteria   the big bacteria
+     * @param smallBacteria the small bacteria
+     */
     public void moveBacteria(List<List<String>> Map, BacteriaType bigBacteria, BacteriaType smallBacteria) {
         //Method used to move bacteria around the Map and if possible, to activate bacteria splitting
         for (int y = 0; y < Map.size(); y++)

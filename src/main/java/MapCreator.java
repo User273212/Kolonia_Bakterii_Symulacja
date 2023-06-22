@@ -1,10 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Map creator.
+ */
 public class MapCreator {
 
     private List<List<String>> CreatedMap;
 
+    /**
+     * Instantiates a new Map creator.
+     */
     public MapCreator() {
         //Map constructor
         Input input = new Input();
@@ -13,6 +19,13 @@ public class MapCreator {
         this.CreatedMap = Create2DMap(width, length);
     }
 
+    /**
+     * Create 2 d map list.
+     *
+     * @param x the x
+     * @param y the y
+     * @return the list
+     */
     public List<List<String>> Create2DMap(int x, int y) {
 
         //Method use to create 2d Map
@@ -31,11 +44,21 @@ public class MapCreator {
     }
 
 
+    /**
+     * Gets map.
+     *
+     * @return the map
+     */
     public List<List<String>> getMap() {
         //Getter for created Map
         return CreatedMap;
     }
 
+    /**
+     * Sets map.
+     *
+     * @param map the map
+     */
     public void setMap(List<List<String>> map) {
         //Setter for Map
         CreatedMap = map;
