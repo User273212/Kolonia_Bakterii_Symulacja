@@ -16,6 +16,10 @@ public class MapCreator {
         Input input = new Input();
         int length = input.getInputNextInt();
         int width = input.getInputNextInt();
+        if (length < 0 || width < 0) {
+            System.out.println("\nValues have to be positive!");
+            System.exit(0);
+        }
         this.CreatedMap = Create2DMap(width, length);
     }
 

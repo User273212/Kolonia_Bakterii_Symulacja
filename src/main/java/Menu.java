@@ -22,7 +22,7 @@ public class Menu {
         List<List<String>> Map;
         if (CheckButton()) {
             System.out.println("\n\b\bOptions:");
-            System.out.println("\nWARNING!\nAll values must be integer and Sum of Bacteria A and B >= Length of Map!\n");
+            System.out.println("\nWARNING!\nAll values must be integer (positive) and Sum of Bacteria A and B >= Length of Map!\n");
             System.out.println("1)Width (x) of 2D map");
             System.out.println("2)Length (y) of 2D map");
             System.out.println("3)Number of Bacteria type A");
@@ -47,6 +47,11 @@ public class Menu {
 
             if (BacteriaNumberA > Map.get(0).size() || BacteriaNumberB > Map.get(0).size()) {
                 System.out.println("\nNumber of Bacteria A or B is to big for map size!");
+                ExitSimulation();
+            }
+
+            if (BacteriaNumberA < 0 || BacteriaNumberB < 0 || SimulationDuration < 0) {
+                System.out.println("\nValues have to be positive!");
                 ExitSimulation();
             }
 
