@@ -69,7 +69,7 @@ public class ShowSimulationResults implements BacteriaQuantity {
      */
     public void ShowResults() {
 
-        // Method used for printing enetered and final data of simulation
+        // Method used for printing entered and final data of simulation
 
         //Simulation information
         System.out.println("\n\nSimulation data:\n");
@@ -97,15 +97,19 @@ public class ShowSimulationResults implements BacteriaQuantity {
 
 
         // Save data to "Simulation_Results.txt"
-
-
         // Define the path to the desktop
         String desktopPath = System.getProperty("user.home") + "/Desktop";
         // Create the Simulation directory on the desktop if it doesn't exist
         String simulationPath = desktopPath + "/Simulation";
         File simulationDir = new File(simulationPath);
         if (!simulationDir.exists()) {
-            simulationDir.mkdir();
+            try {
+                simulationDir.mkdirs();
+            } catch (SecurityException e) {
+                System.out.println("Failed to create Simulation directory.");
+                e.printStackTrace();
+                return;
+            }
         }
         // File used to save data
         String fileName = "Simulation_Results.txt";
@@ -139,6 +143,5 @@ public class ShowSimulationResults implements BacteriaQuantity {
             e.printStackTrace();
         }
     }
-
 
 }
