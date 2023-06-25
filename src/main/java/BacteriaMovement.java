@@ -19,15 +19,18 @@ public abstract class BacteriaMovement implements IsOutOfBorder, GrowBacteria, S
             for (int x = 0; x < Map.get(0).size(); x++) {
                 if (Map.get(y).get(x).equals(String.valueOf(bigBacteria))) {
 
-                    //Splitting bacteria
                     SplitBacteria(Map, y, x, smallBacteria);
+                    generalizedMovement(Map, y, x, bigBacteria, false);
+                    //Splitting bacteria
+
+
                 }
 
                 if (Map.get(y).get(x).equals(String.valueOf(smallBacteria)) & (x + 1 < Map.get(0).size())) {
                     if (Map.get(y).get(x + 1).equals("*")) {
                         GrowBacteria(Map, y, x + 1, bigBacteria);
                         Map.get(y).set(x, "0");
-                        x += 3;
+                        // x += 3;
                     } else {
                         //Moving bacteria in any direction
                         generalizedMovement(Map, y, x, smallBacteria, true);
@@ -60,6 +63,7 @@ public abstract class BacteriaMovement implements IsOutOfBorder, GrowBacteria, S
         if (IsOutOfBorder(Map, PositionY + y, PositionX + x)) {
 
             Map.get(PositionY + y).set(PositionX + x, String.valueOf(bacteriaType));
+
 
             if (x != 0 | y != 0)
                 Map.get(PositionY).set(PositionX, "0");

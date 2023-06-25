@@ -87,18 +87,20 @@ public class Menu {
                 System.out.println("\nround of bacteria A:");
                 PrintMap(Map);
 
-                //round of biomass - adding biomass
-                biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
-
-                System.out.println("\nround of biomass - adding biomass:");
-                PrintMap(Map);
-
                 //round of bacteria B
                 BacteriaB bacteria_b = new BacteriaB();
                 bacteria_b.moveBacteriaB(Map);
 
                 System.out.println("\nround of bacteria B:");
                 PrintMap(Map);
+
+                //round of biomass - adding biomass
+                biomass.AddBiomass(Map, biomass.GenerateBiomassQuantity(Map));
+
+                System.out.println("\nround of biomass - adding biomass:");
+                PrintMap(Map);
+
+
             }
 
             long SimulationTime = EndSimulation - System.currentTimeMillis();

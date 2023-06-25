@@ -26,7 +26,7 @@ public interface SplitBacteria {
     [0, B, 0, 0, 0]               [0, B, 0, 0, 0]           [0, B, 0, 0, 0]
      */
 
-        if (x + 1 <= Map.get(0).size() && Map.get(y).get(x + 1).equals("*")) {
+        if (x + 1 < Map.get(0).size() && Map.get(y).get(x + 1).equals("*")) {
             Map.get(y).set(x, String.valueOf(smallBacteria));
             Map.get(y).set(x + 1, String.valueOf(smallBacteria));
 
@@ -34,7 +34,7 @@ public interface SplitBacteria {
             Map.get(y).set(x, String.valueOf(smallBacteria));
             Map.get(y).set(x - 1, String.valueOf(smallBacteria));
 
-        } else if (y + 1 <= Map.size() && Map.get(y + 1).get(x).equals("*")) {
+        } else if (y + 1 < Map.size() && Map.get(y + 1).get(x).equals("*")) {
             Map.get(y).set(x, String.valueOf(smallBacteria));
             Map.get(y + 1).set(x, String.valueOf(smallBacteria));
 
@@ -42,15 +42,15 @@ public interface SplitBacteria {
             Map.get(y).set(x, String.valueOf(smallBacteria));
             Map.get(y - 1).set(x, String.valueOf(smallBacteria));
 
-        } else if (x + 1 <= Map.get(0).size() && y + 1 <= Map.size() && Map.get(y + 1).get(x + 1).equals("*")) {
+        } else if (x + 1 < Map.get(0).size() && y + 1 < Map.size() && Map.get(y + 1).get(x + 1).equals("*")) {
             Map.get(y).set(x, String.valueOf(smallBacteria));
             Map.get(y + 1).set(x + 1, String.valueOf(smallBacteria));
 
-        } else if (x > 0 && y + 1 <= Map.size() && Map.get(y + 1).get(x - 1).equals("*")) {
+        } else if (x > 0 && y + 1 < Map.size() && Map.get(y + 1).get(x - 1).equals("*")) {
             Map.get(y).set(x, String.valueOf(smallBacteria));
             Map.get(y + 1).set(x - 1, String.valueOf(smallBacteria));
 
-        } else if (x + 1 <= Map.get(0).size() && y > 0 && Map.get(y - 1).get(x + 1).equals("*")) {
+        } else if (x + 1 < Map.get(0).size() && y > 0 && Map.get(y - 1).get(x + 1).equals("*")) {
             Map.get(y).set(x, String.valueOf(smallBacteria));
             Map.get(y - 1).set(x + 1, String.valueOf(smallBacteria));
 
